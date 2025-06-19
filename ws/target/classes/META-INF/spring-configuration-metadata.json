@@ -1,0 +1,111 @@
+{
+  "groups": [
+    {
+      "name": "hoaxify",
+      "type": "com.hoaxify.ws.configuration.HoaxifyProperties",
+      "sourceType": "com.hoaxify.ws.configuration.HoaxifyProperties"
+    },
+    {
+      "name": "hoaxify.auth",
+      "type": "com.hoaxify.ws.configuration.HoaxifyProperties$Auth",
+      "sourceType": "com.hoaxify.ws.configuration.HoaxifyProperties",
+      "sourceMethod": "public com.hoaxify.ws.configuration.HoaxifyProperties.Auth getAuth() "
+    },
+    {
+      "name": "hoaxify.cloudinary",
+      "type": "com.hoaxify.ws.configuration.HoaxifyProperties$Cloudinary",
+      "sourceType": "com.hoaxify.ws.configuration.HoaxifyProperties",
+      "sourceMethod": "public com.hoaxify.ws.configuration.HoaxifyProperties.Cloudinary getCloudinary() "
+    },
+    {
+      "name": "hoaxify.email",
+      "type": "com.hoaxify.ws.configuration.HoaxifyProperties$Email",
+      "sourceType": "com.hoaxify.ws.configuration.HoaxifyProperties",
+      "sourceMethod": "public com.hoaxify.ws.configuration.HoaxifyProperties.Email getEmail() "
+    },
+    {
+      "name": "hoaxify.storage",
+      "type": "com.hoaxify.ws.configuration.HoaxifyProperties$Storage",
+      "sourceType": "com.hoaxify.ws.configuration.HoaxifyProperties",
+      "sourceMethod": "public com.hoaxify.ws.configuration.HoaxifyProperties.Storage getStorage() "
+    }
+  ],
+  "properties": [
+    {
+      "name": "hoaxify.auth.token-expiration-days",
+      "type": "java.lang.Integer",
+      "sourceType": "com.hoaxify.ws.configuration.HoaxifyProperties$Auth"
+    },
+    {
+      "name": "hoaxify.auth.token-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.hoaxify.ws.configuration.HoaxifyProperties$Auth"
+    },
+    {
+      "name": "hoaxify.client-host",
+      "type": "java.lang.String",
+      "sourceType": "com.hoaxify.ws.configuration.HoaxifyProperties"
+    },
+    {
+      "name": "hoaxify.cloudinary.api-key",
+      "type": "java.lang.String",
+      "sourceType": "com.hoaxify.ws.configuration.HoaxifyProperties$Cloudinary"
+    },
+    {
+      "name": "hoaxify.cloudinary.api-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.hoaxify.ws.configuration.HoaxifyProperties$Cloudinary"
+    },
+    {
+      "name": "hoaxify.cloudinary.cloud-name",
+      "type": "java.lang.String",
+      "sourceType": "com.hoaxify.ws.configuration.HoaxifyProperties$Cloudinary"
+    },
+    {
+      "name": "hoaxify.email.from",
+      "type": "java.lang.String",
+      "sourceType": "com.hoaxify.ws.configuration.HoaxifyProperties$Email"
+    },
+    {
+      "name": "hoaxify.email.host",
+      "type": "java.lang.String",
+      "sourceType": "com.hoaxify.ws.configuration.HoaxifyProperties$Email"
+    },
+    {
+      "name": "hoaxify.email.password",
+      "type": "java.lang.String",
+      "sourceType": "com.hoaxify.ws.configuration.HoaxifyProperties$Email"
+    },
+    {
+      "name": "hoaxify.email.port",
+      "type": "java.lang.Integer",
+      "sourceType": "com.hoaxify.ws.configuration.HoaxifyProperties$Email"
+    },
+    {
+      "name": "hoaxify.email.username",
+      "type": "java.lang.String",
+      "sourceType": "com.hoaxify.ws.configuration.HoaxifyProperties$Email"
+    },
+    {
+      "name": "hoaxify.storage.attachment",
+      "type": "java.lang.String",
+      "sourceType": "com.hoaxify.ws.configuration.HoaxifyProperties$Storage"
+    },
+    {
+      "name": "hoaxify.storage.profile",
+      "type": "java.lang.String",
+      "sourceType": "com.hoaxify.ws.configuration.HoaxifyProperties$Storage"
+    },
+    {
+      "name": "hoaxify.storage.root",
+      "type": "java.lang.String",
+      "sourceType": "com.hoaxify.ws.configuration.HoaxifyProperties$Storage"
+    },
+    {
+      "name": "hoaxify.storage.use-cloudinary",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.hoaxify.ws.configuration.HoaxifyProperties$Storage"
+    }
+  ],
+  "hints": []
+}

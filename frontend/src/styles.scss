@@ -1,0 +1,831 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Google Fonts - Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Bootstrap Icons - sadece ikonlar için */
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+/* Özel CSS değişkenleri */
+:root {
+  --primary: #8866cc;
+  --primary-dark: #6644aa;
+  --primary-light: #9467ff;
+  --secondary: #3388cc;
+  --secondary-dark: #2266aa;
+  --secondary-light: #66d1ff;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --info: #3b82f6;
+  --dark: #1f2937;
+  --light: #f8fafc;
+}
+
+/* Base layer - Temel stiller */
+@layer base {
+  body {
+    @apply font-sans text-gray-900 antialiased;
+    font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  * {
+    @apply transition-colors duration-200;
+  }
+}
+
+/* Components layer - Yeniden kullanılabilir bileşenler */
+@layer components {
+  /* Modern Card Stili */
+  .card {
+    @apply bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+  
+  .card-header {
+    @apply bg-gray-50 px-6 py-4 border-b border-gray-100;
+  }
+  
+  .card-body {
+    @apply p-6;
+  }
+  
+  /* Modern Button Stiller */
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-medium text-sm 
+           transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 text-white focus:ring-primary-500 
+           shadow-lg hover:shadow-xl active:scale-95;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary-500 hover:bg-secondary-600 text-white focus:ring-secondary-500 
+           shadow-lg hover:shadow-xl active:scale-95;
+  }
+  
+  .btn-outline-primary {
+    @apply border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white 
+           focus:ring-primary-500 active:scale-95;
+  }
+  
+  .btn-outline-secondary {
+    @apply border-2 border-secondary-500 text-secondary-500 hover:bg-secondary-500 hover:text-white 
+           focus:ring-secondary-500 active:scale-95;
+  }
+  
+  .btn-danger {
+    @apply bg-red-500 hover:bg-red-600 text-white focus:ring-red-500 
+           shadow-lg hover:shadow-xl active:scale-95;
+  }
+  
+  .btn-success {
+    @apply bg-green-500 hover:bg-green-600 text-white focus:ring-green-500 
+           shadow-lg hover:shadow-xl active:scale-95;
+  }
+  
+  /* Modern Form Stiller */
+  .form-control {
+    @apply w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-500 
+           focus:ring-2 focus:ring-primary-200 transition-all duration-200 
+           placeholder-gray-400 text-gray-900 bg-white;
+  }
+  
+  .form-control:focus {
+    @apply outline-none shadow-lg;
+  }
+  
+  .form-label {
+    @apply block text-sm font-semibold text-gray-700 mb-2;
+  }
+  
+  /* Modern Alert Stiller */
+  .alert {
+    @apply px-4 py-3 rounded-lg border-l-4 shadow-md animate-slide-up;
+  }
+  
+  .alert-success {
+    @apply bg-green-50 border-green-400 text-green-800;
+  }
+  
+  .alert-danger {
+    @apply bg-red-50 border-red-400 text-red-800;
+  }
+  
+  .alert-warning {
+    @apply bg-yellow-50 border-yellow-400 text-yellow-800;
+  }
+  
+  .alert-info {
+    @apply bg-blue-50 border-blue-400 text-blue-800;
+  }
+  
+  /* Navigation Bar Stili */
+  .navbar {
+    @apply bg-white shadow-lg border-b border-gray-100 sticky top-0 z-50 backdrop-blur-sm bg-white/95;
+  }
+  
+  .navbar-brand {
+    @apply flex items-center space-x-2 text-xl font-bold text-primary-600 hover:text-primary-700;
+  }
+  
+  .nav-link {
+    @apply px-3 py-2 rounded-lg text-gray-600 hover:text-primary-600 hover:bg-primary-50 
+           transition-all duration-200 font-medium;
+  }
+  
+  .nav-link.active {
+    @apply text-primary-600 bg-primary-50;
+  }
+  
+  /* Modal Stili */
+  .modal-content {
+    @apply bg-white rounded-xl shadow-2xl border-0 overflow-hidden animate-scale-in;
+  }
+  
+  .modal-header {
+    @apply px-6 py-4 bg-gray-50 border-b border-gray-100;
+  }
+  
+  .modal-body {
+    @apply p-6;
+  }
+  
+  .modal-footer {
+    @apply px-6 py-4 bg-gray-50 border-t border-gray-100 flex justify-end space-x-3;
+  }
+  
+  /* Spinner */
+  .spinner {
+    @apply inline-block w-6 h-6 border-2 border-gray-300 border-t-primary-500 rounded-full animate-spin;
+  }
+  
+  /* Profile Image */
+  .profile-image {
+    @apply rounded-full border-4 border-white shadow-lg object-cover;
+  }
+  
+  /* Post Card */
+  .post-card {
+    @apply bg-white rounded-xl shadow-md border border-gray-100 p-6 
+           hover:shadow-lg transition-all duration-300 animate-fade-in;
+    
+    /* Medya görüntüleme iyileştirmeleri */
+    img:not(.profile-image) {
+      @apply object-contain;
+      max-height: none !important;
+      background-color: #f9fafb;
+    }
+    
+    video {
+      @apply h-auto;
+      max-height: none !important;
+    }
+  }
+  
+  /* Comment System */
+  .comments-list {
+    @apply max-h-96 overflow-y-auto space-y-3;
+  }
+  
+  .comment-item {
+    @apply py-3 border-b border-gray-50 last:border-b-0 transition-all duration-200;
+  }
+  
+  .comment-item:hover {
+    @apply bg-gray-50 rounded-lg px-2;
+  }
+  
+  .comment-item .group:hover .opacity-0 {
+    @apply opacity-100;
+  }
+  
+  /* Yanıt sistemi için özel stiller */
+  .comment-replies {
+    @apply mt-3 space-y-3 pl-8 border-l-2 border-gray-100 relative;
+  }
+  
+  .comment-replies::before {
+    @apply absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-gray-200 to-transparent;
+    content: '';
+  }
+  
+  .comment-reply {
+    @apply relative;
+  }
+  
+  .comment-reply::before {
+    @apply absolute -left-8 top-4 w-6 h-0.5 bg-gray-200;
+    content: '';
+  }
+  
+  .comment-reply .comment-item {
+    @apply bg-gray-50/50 rounded-lg p-3 border border-gray-100;
+  }
+  
+  .comment-reply .comment-item:hover {
+    @apply bg-gray-100/50 shadow-sm;
+  }
+  
+  .comment-dropdown {
+    @apply absolute right-0 top-8 z-20 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1
+           animate-scale-in;
+  }
+  
+  .comment-dropdown-item {
+    @apply w-full px-4 py-2 text-left text-sm hover:bg-gray-50 flex items-center 
+           transition-colors duration-200 border-0 bg-transparent;
+  }
+  
+  .comment-dropdown-item.danger {
+    @apply text-red-600 hover:bg-red-50;
+  }
+  
+  .comment-actions-btn {
+    @apply p-1 text-gray-400 hover:text-gray-600 hover:bg-gray-200 rounded-full 
+           transition-all duration-200 opacity-0 group-hover:opacity-100;
+  }
+  
+  .comment-form {
+    @apply bg-gray-50 rounded-xl p-4 border border-gray-100;
+  }
+  
+  .comment-bubble {
+    @apply bg-gray-50 rounded-xl p-3 relative;
+  }
+  
+  .comment-bubble:hover {
+    @apply bg-gray-100;
+  }
+  
+  .comment-meta {
+    @apply flex items-center space-x-2 mb-2;
+  }
+  
+  .comment-username {
+    @apply font-semibold text-gray-900 text-sm;
+  }
+  
+  .comment-timestamp {
+    @apply text-xs text-gray-500;
+  }
+  
+  .comment-content {
+    @apply text-gray-800 text-sm leading-relaxed;
+  }
+  
+  .comment-edit-form {
+    @apply space-y-3;
+  }
+  
+  .comment-edit-actions {
+    @apply flex justify-end space-x-2;
+  }
+  
+  /* Comment Hover Effects */
+  .comment-item:hover .comment-actions-btn {
+    @apply opacity-100;
+  }
+  
+  /* Smooth transitions */
+  .comment-dropdown-backdrop {
+    @apply fixed inset-0 z-10;
+  }
+  
+  /* Modern User Profile Styles */
+  .modern-card {
+    @apply bg-white rounded-2xl shadow-lg border-0 backdrop-blur-sm overflow-hidden;
+    
+    /* Medya görüntüleme iyileştirmeleri */
+    img:not(.profile-image) {
+      @apply object-contain;
+      max-height: none !important;
+      background-color: #f9fafb;
+    }
+    
+    video {
+      @apply h-auto;
+      max-height: none !important;
+    }
+  }
+  
+  .glass-button {
+    @apply inline-flex items-center px-4 py-2 bg-white/20 backdrop-blur-md 
+           border border-white/30 rounded-xl text-white font-medium 
+           hover:bg-white/30 transition-all duration-300 space-x-2;
+  }
+  
+  .stat-card {
+    @apply block p-4 bg-gray-50 rounded-xl border border-gray-100 
+           hover:bg-gray-100 hover:shadow-md transition-all duration-300 
+           text-center min-w-0 flex-shrink-0;
+  }
+  
+  .nav-tab {
+    @apply py-4 px-2 text-gray-500 hover:text-gray-900 border-b-2 border-transparent 
+           hover:border-gray-300 transition-all duration-200 font-medium flex items-center;
+  }
+  
+  .nav-tab.active {
+    @apply text-blue-600 border-blue-600;
+  }
+  
+  .empty-state {
+    @apply text-center py-12;
+  }
+  
+  .error-card {
+    @apply p-6 bg-red-50 border border-red-200 rounded-xl text-center;
+  }
+  
+  .setting-item {
+    @apply p-6 border-b border-gray-100 last:border-b-0;
+  }
+  
+  .danger-zone {
+    @apply mt-6 p-4 bg-red-50 border border-red-200 rounded-xl;
+  }
+  
+  .action-button {
+    @apply inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 
+           text-white rounded-lg font-medium transition-colors duration-200;
+  }
+  
+  .post-action-button {
+    @apply flex items-center space-x-1 p-2 rounded-full hover:bg-gray-100 
+           transition-colors duration-200 text-sm;
+  }
+  
+  .post-action-button i {
+    @apply p-2 rounded-full transition-all duration-200;
+  }
+  
+  /* Background pattern for banner */
+  .bg-pattern {
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0);
+    background-size: 20px 20px;
+  }
+  
+  /* Modern Messages Styles */
+  .conversation-item {
+    @apply p-4 border-b border-gray-100 hover:bg-gray-50 cursor-pointer transition-all duration-200;
+  }
+  
+  .conversation-item.active {
+    @apply bg-blue-50 border-blue-200 border-l-4;
+  }
+  
+  .conversation-item:hover {
+    @apply bg-gray-50 transform translate-x-1;
+  }
+  
+  .conversation-item.active:hover {
+    @apply bg-blue-100;
+  }
+  
+  .unread-badge {
+    @apply inline-flex items-center justify-center w-5 h-5 bg-blue-600 
+           text-white text-xs font-bold rounded-full;
+  }
+  
+  .message-header {
+    @apply p-4 bg-white border-b border-gray-200 flex items-center justify-between 
+           shadow-sm;
+  }
+  
+  .message-area {
+    @apply custom-scrollbar;
+    max-height: calc(100vh - 200px);
+  }
+  
+  .message-bubble {
+    @apply px-4 py-2 rounded-2xl shadow-sm max-w-full break-words;
+  }
+  
+  .message-bubble.sent {
+    @apply bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-br-md;
+  }
+  
+  .message-bubble.received {
+    @apply bg-white text-gray-800 border border-gray-200 rounded-bl-md;
+  }
+  
+  .message-input-container {
+    @apply p-4 bg-white border-t border-gray-200;
+  }
+  
+  .message-input {
+    @apply w-full p-3 pr-20 border border-gray-300 rounded-2xl resize-none 
+           focus:border-blue-500 focus:ring-2 focus:ring-blue-200 
+           focus:outline-none transition-all duration-200 text-sm;
+    min-height: 44px;
+    max-height: 120px;
+  }
+  
+  .send-button {
+    @apply w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 
+           text-white rounded-full flex items-center justify-center 
+           hover:from-blue-600 hover:to-purple-700 transition-all duration-200 
+           disabled:opacity-50 disabled:cursor-not-allowed
+           shadow-lg hover:shadow-xl active:scale-95;
+  }
+  
+  .empty-message-state {
+    @apply flex flex-col items-center justify-center h-full p-8 text-center;
+  }
+  
+  /* Custom Scrollbar */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.5);
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(156, 163, 175, 0.7);
+  }
+  
+  /* Twitter-like Profile */
+  .twitter-profile {
+    @apply relative;
+  }
+  
+  .cover-photo {
+    @apply h-48 bg-gradient-to-br from-primary-400 to-secondary-400 relative;
+  }
+  
+  .profile-image-container {
+    @apply absolute -bottom-16 left-4 z-10;
+  }
+  
+  /* Video Player Styles */
+  .video-container {
+    @apply relative bg-black rounded-xl overflow-hidden;
+  }
+  
+  .video-overlay {
+    @apply absolute inset-0 bg-black bg-opacity-30 rounded-xl flex items-center justify-center
+           opacity-0 hover:opacity-100 transition-opacity duration-200 pointer-events-none;
+  }
+  
+  .video-info-badge {
+    @apply absolute bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded
+           flex items-center;
+  }
+  
+  .video-controls {
+    @apply absolute bottom-4 left-4 right-4 flex items-center justify-between
+           opacity-0 hover:opacity-100 transition-opacity duration-200;
+  }
+  
+  /* Media Preview Styles */
+  .media-preview-grid {
+    @apply grid gap-3;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+  
+  .media-preview-item {
+    @apply relative rounded-lg overflow-hidden border-2 border-gray-200
+           hover:border-blue-300 transition-colors duration-200;
+  }
+  
+  .media-preview-item:hover .remove-media-btn {
+    @apply opacity-100;
+  }
+  
+  .media-preview-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-black/50 to-transparent
+           opacity-0 transition-opacity duration-200;
+  }
+  
+  .media-preview-item:hover .media-preview-overlay {
+    @apply opacity-100;
+  }
+  
+  .media-type-badge {
+    @apply absolute bottom-2 left-2 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded
+           flex items-center;
+  }
+  
+  .media-size-badge {
+    @apply absolute bottom-2 right-2 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded;
+  }
+  
+  .remove-media-btn {
+    @apply absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full
+           flex items-center justify-center text-sm hover:bg-red-600 transition-colors
+           opacity-0;
+  }
+  
+  /* Video Specific Styles */
+  video {
+    @apply w-full h-auto;
+  }
+  
+  video:focus {
+    @apply outline-none;
+  }
+  
+  .video-preview {
+    @apply relative;
+  }
+  
+  .video-preview video {
+    @apply object-cover;
+  }
+  
+  .video-play-overlay {
+    @apply absolute inset-0 flex items-center justify-center bg-black bg-opacity-30
+           rounded-lg cursor-pointer hover:bg-opacity-40 transition-colors duration-200;
+  }
+  
+  .video-play-button {
+    @apply text-white text-4xl opacity-80 hover:opacity-100 transition-opacity duration-200;
+  }
+  
+  /* File Upload Area */
+  .file-upload-area {
+    @apply border-2 border-dashed border-gray-300 rounded-xl p-6 text-center
+           hover:border-blue-400 hover:bg-blue-50 transition-all duration-200
+           cursor-pointer;
+  }
+  
+  .file-upload-area.drag-over {
+    @apply border-blue-500 bg-blue-100;
+  }
+}
+
+/* Utilities layer - Yardımcı sınıflar */
+@layer utilities {
+  /* Animasyonlar */
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  @keyframes scale-in {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  @keyframes slide-in-left {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  @keyframes slide-in-right {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  
+  @keyframes heart-pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slide-up 0.3s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scale-in 0.2s ease-out;
+  }
+  
+  .animate-slide-in-left {
+    animation: slide-in-left 0.3s ease-out;
+  }
+  
+  .animate-slide-in-right {
+    animation: slide-in-right 0.3s ease-out;
+  }
+  
+  .animate-heart-pulse {
+    animation: heart-pulse 0.6s ease-in-out;
+  }
+  
+  /* Responsive text utilities */
+  .text-responsive {
+    @apply text-sm sm:text-base;
+  }
+  
+  .heading-responsive {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+  
+  /* Comment like button hover effect */
+  .comment-like-btn:hover i {
+    transform: scale(1.1);
+  }
+  
+  .comment-like-btn.liked i {
+    animation: heart-pulse 0.6s ease-in-out;
+  }
+}
+
+/* iOS Safari ve iPhone uyumluluğu */
+/* iOS safe area desteği */
+html, body {
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+}
+
+/* iOS Safari için özel kurallar */
+@supports (-webkit-appearance: none) {
+  /* iOS Safari touch feedback */
+  button, .btn, .file-upload-area {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+  
+  /* iOS file input styling */
+  input[type="file"] {
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  
+  /* iOS video controls */
+  video {
+    -webkit-playsinline: true;
+    playsinline: true;
+  }
+}
+
+/* iPhone X ve sonrası için notch desteği */
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3),
+       only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2),
+       only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3),
+       only screen and (device-width: 390px) and (device-height: 844px) and (-webkit-device-pixel-ratio: 3),
+       only screen and (device-width: 428px) and (device-height: 926px) and (-webkit-device-pixel-ratio: 3) {
+  
+  .navbar, .nav {
+    padding-top: env(safe-area-inset-top);
+  }
+  
+  .container, .container-fluid {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
+
+/* iPhone medya preview iyileştirmeleri */
+.media-preview-item {
+  @apply relative overflow-hidden rounded-lg bg-gray-100;
+  
+  img, video {
+    @apply w-full h-full object-cover;
+    /* iOS Safari için smooth loading */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+  }
+  
+  /* iPhone için touch feedback */
+  &:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+}
+
+/* Video oynatma iPhone uyumluluğu */
+video {
+  @apply w-full h-auto;
+  /* iOS Safari video autoplay policy */
+  -webkit-playsinline: true;
+  playsinline: true;
+  
+  &::-webkit-media-controls {
+    display: initial !important;
+  }
+  
+  &::-webkit-media-controls-start-playback-button {
+    display: none;
+  }
+}
+
+/* iPhone için dosya yükleme alanı iyileştirmeleri */
+.file-upload-area {
+  @apply border-2 border-dashed border-gray-300 rounded-xl p-6 text-center
+         hover:border-blue-400 hover:bg-blue-50 transition-all duration-200
+         cursor-pointer;
+  
+  /* iOS Safari için touch handling */
+  -webkit-tap-highlight-color: rgba(59, 130, 246, 0.1);
+  
+  &.drag-over {
+    @apply border-blue-500 bg-blue-100;
+  }
+  
+  /* iPhone için aktif durum */
+  &:active {
+    @apply border-blue-600 bg-blue-200;
+    transform: scale(0.99);
+  }
+}
+
+/* iPhone için responsive image handling */
+@media screen and (max-width: 768px) {
+  .media-preview-grid {
+    @apply grid-cols-2 gap-2;
+  }
+  
+  .media-preview-item {
+    @apply h-24;
+    
+    img, video {
+      @apply object-contain;
+      /* iPhone için memory optimization */
+      image-rendering: -webkit-optimize-contrast;
+    }
+  }
+  
+  /* iPhone için video controls */
+  video {
+    @apply h-auto;
+    max-height: none !important;
+  }
+  
+  /* iPhone için resim görüntüleme */
+  .post-card img {
+    @apply object-contain;
+    max-height: none !important;
+    background-color: #f9fafb;
+  }
+  
+  .modern-card img {
+    @apply object-contain;
+    max-height: none !important;
+    background-color: #f9fafb;
+  }
+}
+
+/* HEIC/HEIF format desteği için placeholder - Geliştirilmiş */
+.heic-placeholder {
+  @apply relative overflow-hidden transition-all duration-300 hover:shadow-lg;
+  
+  /* Gradient background animation */
+  background: linear-gradient(135deg, #fef3c7 0%, #fbbf24 50%, #f59e0b 100%);
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+  
+  .icon {
+    @apply text-yellow-600 drop-shadow-lg transition-transform duration-300;
+  }
+  
+  &:hover .icon {
+    @apply scale-110;
+  }
+  
+  .text {
+    @apply text-yellow-800 font-semibold drop-shadow-sm;
+  }
+  
+  /* HEIC Badge */
+  &::before {
+    content: 'HEIC';
+    @apply absolute top-2 right-2 bg-yellow-600 text-white text-xs px-2 py-1 
+           rounded-full font-bold tracking-wide;
+  }
+  
+  /* iPhone icon overlay */
+  &::after {
+    content: '';
+    @apply absolute bottom-2 left-2 w-6 h-6 bg-yellow-700 rounded-sm;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' viewBox='0 0 24 24'%3E%3Cpath d='M15.5 2H8.5A2.5 2.5 0 006 4.5v15A2.5 2.5 0 008.5 22h7a2.5 2.5 0 002.5-2.5v-15A2.5 2.5 0 0015.5 2zM12 20a1 1 0 110-2 1 1 0 010 2z'/%3E%3C/svg%3E");
+    background-size: 16px 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+/* Gradient animation for HEIC */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
